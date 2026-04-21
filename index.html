@@ -2,7 +2,6 @@
 <html>
 <head>
     <title>CV Ardila Sabila</title>
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -18,15 +17,12 @@
             background: rgba(0,0,0,0.7);
             padding: 12px;
             text-align: center;
-            backdrop-filter: blur(10px);
         }
 
         nav a {
-            color: #fff;
+            color: white;
             margin: 8px;
             text-decoration: none;
-            font-size: 14px;
-            transition: 0.3s;
         }
 
         nav a:hover {
@@ -51,21 +47,14 @@
             max-width: 600px;
             width: 90%;
             text-align: center;
-            backdrop-filter: blur(15px);
-            box-shadow: 0 8px 30px rgba(0,0,0,0.2);
         }
 
         img {
             width: 150px;
             height: 150px;
-            object-fit: cover;
             border-radius: 15px;
-            margin-top: 10px;
+            object-fit: cover;
             border: 3px solid white;
-        }
-
-        h1, h2 {
-            margin-bottom: 10px;
         }
 
         input, textarea {
@@ -74,7 +63,6 @@
             margin: 5px;
             border-radius: 8px;
             border: none;
-            outline: none;
         }
 
         button {
@@ -83,36 +71,10 @@
             border: none;
             border-radius: 8px;
             cursor: pointer;
-            font-weight: bold;
-            transition: 0.3s;
         }
 
         button:hover {
-            background: #ffb703;
-        }
-
-        @media(max-width:600px){
-            nav {
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-
-            nav a {
-                display: block;
-                margin: 5px;
-                font-size: 13px;
-            }
-
-            .card {
-                width: 95%;
-                padding: 15px;
-            }
-
-            img {
-                width: 120px;
-                height: 120px;
-            }
+            background: orange;
         }
     </style>
 </head>
@@ -122,12 +84,6 @@
 <nav>
     <a href="#" class="menu" data-target="home">Home</a>
     <a href="#" class="menu" data-target="about">About</a>
-    <a href="#" class="menu" data-target="skills">Skills</a>
-    <a href="#" class="menu" data-target="education">Education</a>
-    <a href="#" class="menu" data-target="experience">Experience</a>
-    <a href="#" class="menu" data-target="portfolio">Portfolio</a>
-    <a href="#" class="menu" data-target="certificate">Certificate</a>
-    <a href="#" class="menu" data-target="github">GitHub</a>
     <a href="#" class="menu" data-target="contact">Contact</a>
 </nav>
 
@@ -136,7 +92,7 @@
     <div class="card">
         <h1>Hi, I'm Ardila 👋</h1>
         <img src="foto.jpeg">
-        <p>Aku seorang mahasiswa yang lagi fokus belajar web development dan terus eksplor hal-hal baru di dunia teknologi.</p>
+        <p>Aku mahasiswa yang lagi belajar web development dan terus coba hal-hal baru di dunia teknologi.</p>
     </div>
 </div>
 
@@ -144,63 +100,7 @@
 <div id="about" class="section">
     <div class="card">
         <h2>Tentang Aku</h2>
-        <p>Aku punya semangat belajar yang tinggi dan lagi berusaha berkembang di dunia IT, khususnya di bidang web development.</p>
-    </div>
-</div>
-
-<!-- SKILLS -->
-<div id="skills" class="section">
-    <div class="card">
-        <h2>Skills</h2>
-        <ul>
-            <li>HTML & CSS</li>
-            <li>JavaScript</li>
-            <li>PHP & MySQL</li>
-        </ul>
-    </div>
-</div>
-
-<!-- EDUCATION -->
-<div id="education" class="section">
-    <div class="card">
-        <h2>Pendidikan</h2>
-        <p>D3 Komputer - Universitas Ma'soem</p>
-    </div>
-</div>
-
-<!-- EXPERIENCE -->
-<div id="experience" class="section">
-    <div class="card">
-        <h2>Pengalaman</h2>
-        <p>Belum ada pengalaman kerja, tapi aku sering bikin project web buat latihan dan nambah skill.</p>
-    </div>
-</div>
-
-<!-- PORTFOLIO -->
-<div id="portfolio" class="section">
-    <div class="card">
-        <h2>Portfolio</h2>
-        <p>Beberapa project yang pernah aku buat:</p>
-        <ul>
-            <li>Website CV Online</li>
-            <li>Sistem Data Mahasiswa</li>
-        </ul>
-    </div>
-</div>
-
-<!-- CERTIFICATE -->
-<div id="certificate" class="section">
-    <div class="card">
-        <h2>Sertifikat</h2>
-        <p>Saat ini belum ada sertifikat, tapi lagi proses belajar terus 💪</p>
-    </div>
-</div>
-
-<!-- GITHUB -->
-<div id="github" class="section">
-    <div class="card">
-        <h2>GitHub Info</h2>
-        <div id="githubData">Loading...</div>
+        <p>Aku suka belajar hal baru dan lagi fokus ngembangin skill di bidang IT, terutama web.</p>
     </div>
 </div>
 
@@ -221,7 +121,6 @@
 <script>
 $(".menu").click(function(){
     let target = $(this).data("target");
-
     $(".section").hide();
     $("#" + target).fadeIn();
 });
@@ -236,19 +135,14 @@ function kirim(){
         return;
     }
 
-    localStorage.setItem("nama", nama);
-
     alert("Pesan berhasil dikirim!");
-}
 
-$.get("https://api.github.com/users/ardilasabila08", function(data){
-    $("#githubData").html(`
-        <img src="${data.avatar_url}">
-        <p>Username: ${data.login}</p>
-        <p>Repository: ${data.public_repos}</p>
-        <p>Followers: ${data.followers}</p>
-    `);
-});
+    // 🔥 ini yang bikin form kosong
+    $("#nama").val("");
+    $("#email").val("");
+    $("#pesan").val("");
+    $("#error").text("");
+}
 </script>
 
 </body>
