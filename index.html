@@ -3,7 +3,6 @@
 <head>
     <title>CV Ardila Sabila</title>
 
-    <!-- WAJIB BIAR GAK KECIL DI HP -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -11,25 +10,27 @@
     <style>
         body {
             margin: 0;
-            font-family: Arial;
-            background: linear-gradient(to right, #4facfe, #00f2fe);
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(to right, #667eea, #764ba2);
         }
 
         nav {
-            background: #222;
-            padding: 10px;
+            background: rgba(0,0,0,0.7);
+            padding: 12px;
             text-align: center;
+            backdrop-filter: blur(10px);
         }
 
         nav a {
-            color: white;
+            color: #fff;
             margin: 8px;
             text-decoration: none;
             font-size: 14px;
+            transition: 0.3s;
         }
 
         nav a:hover {
-            color: yellow;
+            color: #ffd369;
         }
 
         .section {
@@ -43,40 +44,53 @@
         }
 
         .card {
-            background: rgba(0,0,0,0.5);
-            padding: 20px;
-            border-radius: 15px;
-            margin: 20px auto;
+            background: rgba(255,255,255,0.1);
+            padding: 25px;
+            border-radius: 20px;
+            margin: 30px auto;
             max-width: 600px;
             width: 90%;
             text-align: center;
+            backdrop-filter: blur(15px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.2);
         }
 
-        /* FOTO KOTAK */
         img {
             width: 150px;
             height: 150px;
             object-fit: cover;
-            border-radius: 10px;
+            border-radius: 15px;
             margin-top: 10px;
+            border: 3px solid white;
+        }
+
+        h1, h2 {
+            margin-bottom: 10px;
         }
 
         input, textarea {
             width: 90%;
             padding: 10px;
             margin: 5px;
-            border-radius: 5px;
+            border-radius: 8px;
             border: none;
+            outline: none;
         }
 
         button {
-            padding: 10px;
-            background: yellow;
+            padding: 10px 20px;
+            background: #ffd369;
             border: none;
+            border-radius: 8px;
             cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
         }
 
-        /* RESPONSIVE FIX */
+        button:hover {
+            background: #ffb703;
+        }
+
         @media(max-width:600px){
             nav {
                 display: flex;
@@ -120,17 +134,17 @@
 <!-- HOME -->
 <div id="home" class="section active">
     <div class="card">
-        <h1>Ardila Sabila</h1>
+        <h1>Hi, I'm Ardila 👋</h1>
         <img src="foto.jpeg">
-        <p>Saya adalah mahasiswa yang memiliki minat dalam pengembangan web dan terus belajar teknologi baru.</p>
+        <p>Aku seorang mahasiswa yang lagi fokus belajar web development dan terus eksplor hal-hal baru di dunia teknologi.</p>
     </div>
 </div>
 
 <!-- ABOUT -->
 <div id="about" class="section">
     <div class="card">
-        <h2>Tentang Saya</h2>
-        <p>Saya memiliki semangat belajar tinggi dan ingin berkembang di dunia IT.</p>
+        <h2>Tentang Aku</h2>
+        <p>Aku punya semangat belajar yang tinggi dan lagi berusaha berkembang di dunia IT, khususnya di bidang web development.</p>
     </div>
 </div>
 
@@ -149,16 +163,16 @@
 <!-- EDUCATION -->
 <div id="education" class="section">
     <div class="card">
-        <h2>Education</h2>
-        <p>D3 Komputer - (isi kampus kamu)</p>
+        <h2>Pendidikan</h2>
+        <p>D3 Komputer - (isi kampus kamu ya)</p>
     </div>
 </div>
 
 <!-- EXPERIENCE -->
 <div id="experience" class="section">
     <div class="card">
-        <h2>Experience</h2>
-        <p>Belum ada pengalaman kerja, namun aktif membuat project web.</p>
+        <h2>Pengalaman</h2>
+        <p>Belum ada pengalaman kerja, tapi aku sering bikin project web buat latihan dan nambah skill.</p>
     </div>
 </div>
 
@@ -166,7 +180,7 @@
 <div id="portfolio" class="section">
     <div class="card">
         <h2>Portfolio</h2>
-        <p>Project yang pernah dibuat:</p>
+        <p>Beberapa project yang pernah aku buat:</p>
         <ul>
             <li>Website CV Online</li>
             <li>Sistem Data Mahasiswa</li>
@@ -177,8 +191,8 @@
 <!-- CERTIFICATE -->
 <div id="certificate" class="section">
     <div class="card">
-        <h2>Certificate</h2>
-        <p>Belum ada sertifikat</p>
+        <h2>Sertifikat</h2>
+        <p>Saat ini belum ada sertifikat, tapi lagi proses belajar terus 💪</p>
     </div>
 </div>
 
@@ -212,7 +226,6 @@ $(".menu").click(function(){
     $("#" + target).fadeIn();
 });
 
-/* FORM */
 function kirim(){
     let nama = $("#nama").val();
     let email = $("#email").val();
@@ -228,7 +241,6 @@ function kirim(){
     alert("Pesan berhasil dikirim!");
 }
 
-/* GITHUB API */
 $.get("https://api.github.com/users/ardilasabila08", function(data){
     $("#githubData").html(`
         <img src="${data.avatar_url}">
