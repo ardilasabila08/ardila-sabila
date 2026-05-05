@@ -1,8 +1,7 @@
-const CACHE_NAME = "cv-pwa-final-v1";
+const CACHE_NAME = "cv-pwa-fix";
 const urlsToCache = [
   "/",
   "/index.html",
-  "/manifest.json",
   "/icon-192.png",
   "/icon-512.png",
   "/foto.jpeg"
@@ -12,11 +11,6 @@ self.addEventListener("install", event => {
   event.waitUntil(
     caches.open(CACHE_NAME).then(cache => cache.addAll(urlsToCache))
   );
-  self.skipWaiting();
-});
-
-self.addEventListener("activate", event => {
-  event.waitUntil(self.clients.claim());
 });
 
 self.addEventListener("fetch", event => {
