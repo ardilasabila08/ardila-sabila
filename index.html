@@ -3,6 +3,7 @@
 
 <head>
     <title>CV Ardila Sabila</title>
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- PWA -->
@@ -13,7 +14,6 @@
     <!-- iOS -->
     <link rel="apple-touch-icon" href="icon-192.png">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="mobile-web-app-capable" content="yes">
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -21,52 +21,73 @@
     <style>
         body {
             margin: 0;
-            font-family: 'Poppins', sans-serif;
+            font-family: Arial;
             background: linear-gradient(135deg, #667eea, #764ba2);
         }
+
         nav {
-            background: rgba(0, 0, 0, 0.6);
-            padding: 12px;
+            background: rgba(0,0,0,0.6);
+            padding: 10px;
             text-align: center;
-            backdrop-filter: blur(8px);
         }
+
         nav a {
             color: white;
-            margin: 8px;
+            margin: 5px;
             text-decoration: none;
-            font-size: 14px;
         }
-        .section { display: none; padding: 20px; color: white; }
-        .active { display: block; }
+
+        .section { display:none; padding:20px; color:white; }
+        .active { display:block; }
+
         .card {
             background: rgba(255,255,255,0.1);
-            padding: 25px;
-            border-radius: 20px;
-            margin: 30px auto;
-            max-width: 600px;
-            width: 90%;
-            text-align: center;
+            padding:20px;
+            border-radius:15px;
+            margin:20px auto;
+            max-width:500px;
+            text-align:center;
         }
+
         img {
-            width:150px;height:150px;border-radius:15px;
-            border:3px solid white;
+            width:120px;
+            height:120px;
+            border-radius:10px;
+        }
+
+        /* SPLASH MANUAL */
+        #loading {
+            position:fixed;
+            top:0;
+            left:0;
+            width:100%;
+            height:100%;
+            background:#ffffff;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            z-index:9999;
         }
     </style>
 </head>
 
 <body>
 
+<!-- SPLASH SCREEN -->
+<div id="loading">
+    <img src="icon-512.png" width="120">
+</div>
+
 <nav>
     <a href="#" class="menu" data-target="home">Home</a>
     <a href="#" class="menu" data-target="about">About</a>
-    <a href="#" class="menu" data-target="skills">Skills</a>
 </nav>
 
 <div id="home" class="section active">
     <div class="card">
         <h1>Ardila Sabila</h1>
         <img src="foto.jpeg">
-        <p>Saya adalah mahasiswa yang memiliki minat dalam pengembangan web.</p>
+        <p>Mahasiswa yang tertarik di bidang web development.</p>
     </div>
 </div>
 
@@ -77,31 +98,27 @@
     </div>
 </div>
 
-<div id="skills" class="section">
-    <div class="card">
-        <h2>Skills</h2>
-        <ul>
-            <li>HTML</li>
-            <li>CSS</li>
-            <li>JavaScript</li>
-        </ul>
-    </div>
-</div>
-
 <script>
 $(".menu").click(function(){
     let target = $(this).data("target");
     $(".section").hide();
     $("#" + target).show();
 });
+
+// splash delay (BIAR KELIHATAN)
+window.onload = function(){
+    setTimeout(()=>{
+        document.getElementById("loading").style.display = "none";
+    }, 1500);
+}
 </script>
 
-<!-- REGISTER SW -->
+<!-- SERVICE WORKER -->
 <script>
 if ("serviceWorker" in navigator) {
     navigator.serviceWorker.register("sw.js")
-    .then(() => console.log("SW aktif"))
-    .catch(err => console.log("SW gagal:", err));
+    .then(()=>console.log("SW aktif"))
+    .catch(err=>console.log("SW gagal", err));
 }
 </script>
 
