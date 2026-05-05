@@ -5,6 +5,12 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- PWA -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#4CAF50">
+    <link rel="apple-touch-icon" href="/icon.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <style>
@@ -228,7 +234,6 @@ function kirim(){
 
     alert("Pesan berhasil dikirim!");
 
-    // tetap sesuai permintaan kamu (biar kosong)
     $("#nama").val("");
     $("#email").val("");
     $("#pesan").val("");
@@ -243,6 +248,14 @@ $.get("https://api.github.com/users/ardilasabila08", function(data){
         <p>Followers: ${data.followers}</p>
     `);
 });
+</script>
+
+<!-- REGISTER SERVICE WORKER -->
+<script>
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("/sw.js")
+    .then(() => console.log("Service Worker aktif"));
+}
 </script>
 
 </body>
