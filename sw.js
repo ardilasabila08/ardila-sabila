@@ -1,24 +1,26 @@
-const CACHE_NAME = "cv-pwa-v1";
-const urlsToCache = [
-  "./",
-  "./index.html",
-  "./icon.png"
+const CACHE_NAME = "cv-pwa-v4";
+const ASSETS = [
+  "/",
+  "/index.html",
+  "/manifest.json",
+  "/icon-192.png",
+  "/icon-512.png",
+  "/foto.jpeg"
 ];
 
-self.addEventListener("install", function (event) {
+self.addEventListener("install", event => {
   event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then(function (cache) {
-        return cache.addAll(urlsToCache);
-      })
+    caches.open(CACHE_NAME).then(cache => cache.addAll(ASSETS))
   );
+  self.skipWaiting();
 });
 
-self.addEventListener("fetch", function (event) {
+self.addEventListener("activate", event => {
+  event.waitUntil(self.clients.claim());
+});
+
+self.addEventListener("fetch", event => {
   event.respondWith(
-    caches.match(event.request)
-      .then(function (response) {
-        return response || fetch(event.request);
-      })
+    caches.match(event.request).then(res => res || fetch(event.request))
   );
 });
