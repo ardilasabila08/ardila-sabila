@@ -1,6 +1,6 @@
 {
   "name": "CV Ardila Sabila",
-  "short_name": "CV Ardila",
+  "short_name": "CV",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
@@ -18,3 +18,4 @@
     }
   ]
 }
+
