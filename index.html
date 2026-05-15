@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <title>CV Ardila Sabila - Full Interactive</title>
+    <title>CV Ardila Sabila - Professional Portfolio</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
@@ -12,31 +12,40 @@
         body { background: linear-gradient(135deg, #6c5ce7, #a29bfe); min-height: 100vh; display: flex; flex-direction: column; align-items: center; padding: 20px 10px; }
         
         /* Navbar Slide */
-        .navbar { width: 100%; max-width: 500px; display: flex; overflow-x: auto; gap: 10px; padding: 15px; background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(10px); border-radius: 20px; margin-bottom: 20px; }
+        .navbar { width: 100%; max-width: 500px; display: flex; overflow-x: auto; gap: 12px; padding: 15px; background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(10px); border-radius: 25px; margin-bottom: 20px; }
         .navbar::-webkit-scrollbar { display: none; }
-        .navbar a { text-decoration: none; color: white; font-size: 10px; font-weight: 600; text-transform: uppercase; cursor: pointer; padding: 8px 12px; border-radius: 10px; white-space: nowrap; }
-        .navbar a.active { background: white; color: #6c5ce7; }
+        .navbar a { text-decoration: none; color: white; font-size: 11px; font-weight: 600; text-transform: uppercase; cursor: pointer; padding: 8px 15px; border-radius: 12px; white-space: nowrap; transition: 0.3s; }
+        .navbar a.active { background: white; color: #6c5ce7; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
 
         /* Card Utama */
-        .cv-card { width: 100%; max-width: 450px; background: white; border-radius: 40px; box-shadow: 0 25px 50px rgba(0,0,0,0.2); overflow: hidden; min-height: 600px; position: relative; padding-bottom: 20px; }
+        .cv-card { width: 100%; max-width: 450px; background: white; border-radius: 40px; box-shadow: 0 25px 50px rgba(0,0,0,0.2); overflow: hidden; min-height: 580px; position: relative; padding-bottom: 20px; }
 
-        .page { display: none; padding: 25px; animation: fadeIn 0.4s; }
+        .page { display: none; padding: 30px 25px; animation: slideIn 0.4s ease-out; }
         .page.active { display: block; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideIn { from { opacity: 0; transform: translateX(20px); } to { opacity: 1; transform: translateX(0); } }
 
-        /* Form Style */
-        .form-group { margin-bottom: 12px; }
-        label { font-size: 11px; font-weight: 700; color: #6c5ce7; display: block; margin-bottom: 4px; }
-        input, textarea { width: 100%; padding: 10px; border-radius: 10px; border: 1px solid #ddd; background: #f9f9fb; font-size: 12px; }
-        .btn-save { width: 100%; padding: 10px; background: #6c5ce7; color: white; border: none; border-radius: 10px; font-weight: 700; cursor: pointer; margin-top: 5px; font-size: 12px; }
-        
-        .result-box { margin-top: 15px; padding: 12px; background: #f0f2f5; border-radius: 12px; font-size: 12px; border-left: 4px solid #6c5ce7; color: #444; }
+        /* Section Styling */
+        h2.title { color: #6c5ce7; font-size: 20px; margin-bottom: 15px; border-left: 5px solid #6c5ce7; padding-left: 12px; }
+        p.desc { font-size: 13px; color: #636e72; line-height: 1.7; text-align: justify; }
+        .info-list { list-style: none; margin-top: 15px; }
+        .info-list li { font-size: 13px; margin-bottom: 10px; display: flex; align-items: center; gap: 10px; color: #2d3436; }
+        .info-list i { color: #6c5ce7; font-size: 16px; }
 
-        /* Home & Portfolio */
-        .home-profile { text-align: center; padding-top: 20px; }
-        .home-profile img { width: 140px; height: 140px; border-radius: 20px; object-fit: cover; border: 4px solid #f0f2f5; margin-bottom: 15px; }
-        .project-box { background: #f8f9ff; border: 2px dashed #6c5ce7; border-radius: 20px; padding: 20px; text-align: center; }
-        .btn-apps { display: inline-block; margin-top: 10px; background: #6c5ce7; color: white; padding: 8px 20px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 12px; }
+        /* Home Content */
+        .home-profile { text-align: center; }
+        .home-profile img { width: 160px; height: 160px; border-radius: 30px; object-fit: cover; border: 5px solid #f0f2f5; margin-bottom: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        .home-profile h1 { font-size: 26px; color: #2d3436; margin-bottom: 5px; }
+
+        /* Portfolio Box */
+        .project-box { background: #f8f9ff; border: 2px dashed #6c5ce7; border-radius: 25px; padding: 25px; text-align: center; }
+        .btn-apps { display: inline-block; margin-top: 15px; background: linear-gradient(135deg, #6c5ce7, #a29bfe); color: white; padding: 12px 25px; border-radius: 12px; text-decoration: none; font-weight: 700; font-size: 13px; box-shadow: 0 5px 15px rgba(108, 92, 231, 0.3); }
+
+        /* Form Contact */
+        .form-group { margin-bottom: 15px; }
+        label { font-size: 11px; font-weight: 700; color: #6c5ce7; display: block; margin-bottom: 5px; }
+        input, textarea { width: 100%; padding: 12px; border-radius: 12px; border: 1px solid #eee; background: #f9f9fb; font-size: 13px; }
+        .btn-save { width: 100%; padding: 12px; background: #6c5ce7; color: white; border: none; border-radius: 12px; font-weight: 700; cursor: pointer; margin-top: 10px; }
+        .result-contact { margin-top: 20px; padding: 15px; background: #f0f2f5; border-radius: 15px; font-size: 12px; border-left: 5px solid #2ecc71; display: none; }
     </style>
 </head>
 <body>
@@ -47,8 +56,8 @@
         <a onclick="showPage('skills')" id="nav-skills">Skills</a>
         <a onclick="showPage('education')" id="nav-education">Edu</a>
         <a onclick="showPage('experience')" id="nav-experience">Exp</a>
-        <a onclick="showPage('github')" id="nav-github">Github</a>
         <a onclick="showPage('certificate')" id="nav-certificate">Cert</a>
+        <a onclick="showPage('github')" id="nav-github">Github</a>
         <a onclick="showPage('contact')" id="nav-contact">Contact</a>
     </nav>
 
@@ -56,61 +65,90 @@
         <div id="home" class="page active">
             <div class="home-profile">
                 <img src="foto.jpeg" alt="Ardila Sabila">
-                <h2 id="disp-nama">Ardila Sabila</h2>
-                <p id="disp-bio" style="font-size: 13px; color: #636e72;">Mahasiswa Komputerisasi Akuntansi</p>
+                <h1>Ardila Sabila</h1>
+                <p style="color: #6c5ce7; font-weight: 600; margin-bottom: 15px;">Accounting Computerization Student</p>
+                <p class="desc">
+                    Saya adalah mahasiswi Universitas Ma'soem yang memiliki dedikasi tinggi dalam mengintegrasikan efisiensi Akuntansi dengan kekuatan teknologi Web Development. Dengan latar belakang pendidikan di bidang Komputerisasi Akuntansi, saya berupaya menciptakan solusi digital yang tidak hanya fungsional, tetapi juga memberikan nilai strategis bagi operasional bisnis.
+                </p>
             </div>
         </div>
 
         <div id="portfolio" class="page">
-            <h3 style="color:#6c5ce7; margin-bottom:15px;">My Portfolio</h3>
+            <h2 class="title">My Major Project</h2>
             <div class="project-box">
-                <i class="bi bi-phone" style="font-size: 40px; color: #6c5ce7;"></i>
-                <h4>Smart Campus Mobile</h4>
-                <p style="font-size: 11px; margin-bottom: 10px;">Aplikasi Akademik Mobile Universitas Ma'soem</p>
-                <a href="https://smart-campus-mobile-ardila.vercel.app/" target="_blank" class="btn-apps">Buka Aplikasi</a>
+                <i class="bi bi-phone-vibrate" style="font-size: 45px; color: #6c5ce7;"></i>
+                <h3 style="margin-top:10px;">Smart Campus Mobile</h3>
+                <p style="font-size: 12px; color: #636e72; margin: 10px 0;">Sistem Informasi Akademik terpadu yang dirancang khusus untuk mobilitas mahasiswa Universitas Ma'soem.</p>
+                <a href="https://smart-campus-mobile-ardila.vercel.app/" target="_blank" class="btn-apps">LAUNCH APP</a>
             </div>
         </div>
 
         <div id="skills" class="page">
-            <h3>Technical Skills</h3>
-            <div class="form-group"><label>Daftar Skills</label><textarea id="in-skills" placeholder="Contoh: PHP, MySQL, CSS..."></textarea></div>
-            <button class="btn-save" onclick="saveData('skills')">Simpan Skills</button>
-            <div class="result-box" id="res-skills">Belum ada data.</div>
+            <h2 class="title">Technical Skills</h2>
+            <ul class="info-list">
+                <li><i class="bi bi-code-slash"></i> PHP Native & MySQLi</li>
+                <li><i class="bi bi-brush"></i> CSS3 & Bootstrap 5</li>
+                <li><i class="bi bi-calculator"></i> Financial Accounting & Inventory</li>
+                <li><i class="bi bi-laptop"></i> System Analysis & Design (APSI)</li>
+            </ul>
         </div>
 
         <div id="education" class="page">
-            <h3>Education</h3>
-            <div class="form-group"><label>Riwayat Pendidikan</label><textarea id="in-edu" placeholder="Contoh: D3 Komputerisasi Akuntansi - Universitas Ma'soem"></textarea></div>
-            <button class="btn-save" onclick="saveData('edu')">Simpan Pendidikan</button>
-            <div class="result-box" id="res-edu">Belum ada data.</div>
+            <h2 class="title">Education</h2>
+            <div style="margin-bottom: 20px;">
+                <h4 style="font-size: 14px; color: #2d3436;">Universitas Ma'soem</h4>
+                <p style="font-size: 12px; color: #6c5ce7;">D3 Komputerisasi Akuntansi (2024 - Sekarang)</p>
+                <p class="desc" style="margin-top: 5px;">Mempelajari Pemrograman Web, Akuntansi Keuangan, Perpajakan, dan Analisis Sistem Informasi.</p>
+            </div>
         </div>
 
         <div id="experience" class="page">
-            <h3>Experience</h3>
-            <div class="form-group"><label>Pengalaman Kerja/Organisasi</label><textarea id="in-exp" placeholder="Ceritakan pengalamanmu..."></textarea></div>
-            <button class="btn-save" onclick="saveData('exp')">Simpan Pengalaman</button>
-            <div class="result-box" id="res-exp">Belum ada data.</div>
-        </div>
-
-        <div id="github" class="page">
-            <h3>GitHub Link</h3>
-            <div class="form-group"><label>URL GitHub</label><input type="text" id="in-git" placeholder="https://github.com/username"></div>
-            <button class="btn-save" onclick="saveData('git')">Simpan Link</button>
-            <div class="result-box" id="res-git">Belum ada data.</div>
+            <h2 class="title">Work Experience</h2>
+            <div style="margin-bottom: 15px;">
+                <h4 style="font-size: 14px;">Web Developer (Student Project)</h4>
+                <p style="font-size: 12px; color: #6c5ce7;">Sistem Informasi Manajemen Inventaris</p>
+                <p class="desc">Membangun sistem CRUD untuk pendataan barang operasional menggunakan PHP dan database MySQL.</p>
+            </div>
         </div>
 
         <div id="certificate" class="page">
-            <h3>Certificates</h3>
-            <div class="form-group"><label>Nama Sertifikat</label><textarea id="in-cert" placeholder="Contoh: BNSP Akuntansi, Web Dev Cert..."></textarea></div>
-            <button class="btn-save" onclick="saveData('cert')">Simpan Sertifikat</button>
-            <div class="result-box" id="res-cert">Belum ada data.</div>
+            <h2 class="title">Certificates</h2>
+            <ul class="info-list">
+                <li><i class="bi bi-patch-check"></i> Sertifikat Kompetensi Web Programming</li>
+                <li><i class="bi bi-patch-check"></i> Peserta Seminar Nasional Sistem Informasi</li>
+                <li><i class="bi bi-patch-check"></i> Penghargaan LP Programming Challenge</li>
+            </ul>
+        </div>
+
+        <div id="github" class="page">
+            <h2 class="title">GitHub Profile</h2>
+            <p class="desc" style="margin-bottom: 15px;">Anda dapat melihat seluruh dokumentasi kode dan proyek saya melalui repositori GitHub resmi saya.</p>
+            <a href="https://github.com/ardilasabila08" target="_blank" style="text-decoration:none; color:#6c5ce7; font-weight:700;">
+                <i class="bi bi-github"></i> @ardilasabila08
+            </a>
         </div>
 
         <div id="contact" class="page">
-            <h3>Contact</h3>
-            <div class="form-group"><label>Email/WhatsApp</label><input type="text" id="in-cont" placeholder="Email atau No. HP"></div>
-            <button class="btn-save" onclick="saveData('cont')">Simpan Kontak</button>
-            <div class="result-box" id="res-cont">Belum ada data.</div>
+            <h2 class="title">Hubungi Saya</h2>
+            <div class="form-group">
+                <label>Nama Lengkap</label>
+                <input type="text" id="c-nama" placeholder="Nama Anda...">
+            </div>
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" id="c-email" placeholder="email@contoh.com">
+            </div>
+            <div class="form-group">
+                <label>No. HP</label>
+                <input type="text" id="c-hp" placeholder="08xxxxxxxxxx">
+            </div>
+            <div class="form-group">
+                <label>Keterangan / Pesan</label>
+                <textarea id="c-pesan" rows="3" placeholder="Pesan singkat..."></textarea>
+            </div>
+            <button class="btn-save" onclick="saveContact()">Kirim & Simpan</button>
+            
+            <div class="result-contact" id="res-contact"></div>
         </div>
     </div>
 
@@ -122,13 +160,19 @@
             document.getElementById('nav-' + pageId).classList.add('active');
         }
 
-        function saveData(type) {
-            const val = document.getElementById('in-' + type).value;
-            if(val) {
-                document.getElementById('res-' + type).innerText = val;
-                alert("Data " + type.toUpperCase() + " Berhasil Disimpan!");
+        function saveContact() {
+            const nama = document.getElementById('c-nama').value;
+            const email = document.getElementById('c-email').value;
+            const hp = document.getElementById('c-hp').value;
+            const pesan = document.getElementById('c-pesan').value;
+
+            if(nama && email && hp) {
+                const res = document.getElementById('res-contact');
+                res.style.display = 'block';
+                res.innerHTML = `<strong>Berhasil Disimpan!</strong><br>Nama: ${nama}<br>Email: ${email}<br>HP: ${hp}<br>Pesan: ${pesan}`;
+                alert("Kontak Anda telah tersimpan sementara!");
             } else {
-                alert("Isi dulu ya datanya!");
+                alert("Mohon lengkapi Nama, Email, dan No HP ya!");
             }
         }
     </script>
