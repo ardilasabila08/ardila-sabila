@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <title>CV Ardila Sabila - Professional Portfolio</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#6c5ce7">
+    
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 
@@ -174,6 +178,15 @@
             } else {
                 alert("Mohon lengkapi Nama, Email, dan No HP ya!");
             }
+        }
+
+        // PENDAFTARAN SERVICE WORKER UNTUK PWA
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(reg => console.log('SW terdaftar!'))
+                    .catch(err => console.log('SW Gagal!', err));
+            });
         }
     </script>
 </body>
