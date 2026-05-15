@@ -13,41 +13,109 @@
 
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; scroll-behavior: smooth; }
-        body { background-color: #f4f7f6; color: #2d3436; padding: 20px 10px; }
         
-        .cv-container { width: 100%; max-width: 500px; background: white; border-radius: 30px; margin: auto; box-shadow: 0 10px 30px rgba(0,0,0,0.1); overflow: hidden; padding-bottom: 30px; }
-
-        /* NAVIGASI LENGKAP (Horizontal Scroll untuk HP) */
-        .navbar { 
-            display: flex; overflow-x: auto; gap: 15px; padding: 15px; 
-            background: white; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 100;
-            white-space: nowrap; -webkit-overflow-scrolling: touch;
+        body { 
+            background: linear-gradient(135deg, #6c5ce7, #a29bfe); 
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            padding: 20px 10px;
         }
-        .navbar::-webkit-scrollbar { display: none; }
-        .navbar a { text-decoration: none; color: #636e72; font-size: 11px; font-weight: 600; text-transform: uppercase; }
-        .navbar a:hover { color: #6c5ce7; }
 
-        .header { background: linear-gradient(135deg, #6c5ce7, #a29bfe); padding: 40px 20px; text-align: center; color: white; }
-        .header img { width: 100px; height: 100px; border-radius: 50%; border: 4px solid rgba(255,255,255,0.3); margin-bottom: 15px; object-fit: cover; }
+        .cv-card {
+            width: 100%;
+            max-width: 450px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 40px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+            overflow: hidden;
+            padding-bottom: 30px;
+        }
 
-        .section { padding: 25px; border-bottom: 1px solid #f1f1f1; }
-        .section h2 { font-size: 16px; color: #6c5ce7; margin-bottom: 12px; border-left: 4px solid #6c5ce7; padding-left: 10px; }
-        .section p, .section li { font-size: 13px; color: #636e72; line-height: 1.6; }
-        ul { list-style: none; }
+        /* Navigasi Menu Lengkap */
+        .nav-menu {
+            display: flex;
+            overflow-x: auto;
+            gap: 15px;
+            padding: 15px;
+            background: #2d3436;
+            white-space: nowrap;
+        }
+        .nav-menu::-webkit-scrollbar { display: none; }
+        .nav-menu a {
+            text-decoration: none;
+            color: white;
+            font-size: 11px;
+            font-weight: 500;
+            text-transform: uppercase;
+        }
 
-        /* Project Card Smart Campus */
-        .project-card { background: #f8f9ff; border: 2px dashed #a29bfe; border-radius: 20px; padding: 20px; text-align: center; margin-top: 10px; }
-        .btn-link { display: inline-block; background: #6c5ce7; color: white; text-decoration: none; padding: 10px 20px; border-radius: 12px; font-size: 13px; font-weight: 600; margin-top: 15px; box-shadow: 0 5px 15px rgba(108, 92, 231, 0.2); }
+        /* Profile Area (Sesuai Foto HP) */
+        .profile-section {
+            text-align: center;
+            padding: 40px 20px;
+        }
+        .profile-section h1 { font-size: 28px; color: #2d3436; margin-bottom: 20px; }
+        .profile-section img {
+            width: 150px;
+            height: 150px;
+            border-radius: 25px;
+            border: 5px solid white;
+            object-fit: cover;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .profile-section p {
+            font-size: 14px;
+            color: #636e72;
+            line-height: 1.6;
+            padding: 0 20px;
+        }
 
-        #loading { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: white; display: flex; justify-content: center; align-items: center; z-index: 9999; }
+        /* Content Sections */
+        .section { padding: 25px; }
+        .section h2 {
+            font-size: 18px;
+            color: #6c5ce7;
+            border-left: 4px solid #6c5ce7;
+            padding-left: 12px;
+            margin-bottom: 15px;
+        }
+
+        /* Kotak Portfolio Smart Campus */
+        .project-box {
+            background: white;
+            border: 2px dashed #a29bfe;
+            border-radius: 25px;
+            padding: 30px 20px;
+            text-align: center;
+            margin-top: 10px;
+        }
+        .btn-apps {
+            display: inline-block;
+            background: #6c5ce7;
+            color: white;
+            text-decoration: none;
+            padding: 12px 30px;
+            border-radius: 15px;
+            font-weight: 600;
+            margin-top: 20px;
+            box-shadow: 0 8px 20px rgba(108, 92, 231, 0.3);
+        }
+
+        #loader {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: white; display: flex; justify-content: center;
+            align-items: center; z-index: 9999;
+        }
     </style>
 </head>
 <body>
 
-    <div id="loading"><img src="icon-512.png" width="60"></div>
+    <div id="loader"><img src="icon-512.png" width="80"></div>
 
-    <div class="cv-container">
-        <nav class="navbar">
+    <div class="cv-card">
+        <nav class="nav-menu">
             <a href="#">Home</a>
             <a href="#about">About</a>
             <a href="#skills">Skills</a>
@@ -55,62 +123,44 @@
             <a href="#experience">Experience</a>
             <a href="#portfolio">Portfolio</a>
             <a href="#certificate">Certificate</a>
+            <a href="#github">GitHub</a>
             <a href="#contact">Contact</a>
         </nav>
 
-        <div class="header">
+        <div class="profile-section">
+            <h1>Ardila Sabila</h1>
             <img src="foto.jpeg" alt="Ardila Sabila">
-            <h2>Ardila Sabila</h2>
-            <p style="font-size: 12px; opacity: 0.9;">Accounting Computerization Student</p>
+            <p>Saya adalah mahasiswa yang memiliki minat dalam pengembangan web dan terus belajar teknologi baru.</p>
         </div>
 
         <div class="section" id="about">
-            <h2>About Me</h2>
-            <p>Mahasiswa yang berfokus pada integrasi Sistem Informasi Akuntansi dan Web Development.</p>
-        </div>
-
-        <div class="section" id="skills">
-            <h2>Skills</h2>
-            <p>PHP, MySQL, CSS, Bootstrap, Accounting Systems.</p>
-        </div>
-
-        <div class="section" id="education">
-            <h2>Education</h2>
-            <p>D3 Komputerisasi Akuntansi - Universitas Ma'soem.</p>
-        </div>
-
-        <div class="section" id="experience">
-            <h2>Experience</h2>
-            <p>Project Web Development & Accounting Information Systems.</p>
+            <h2>Tentang Saya</h2>
+            <p style="font-size: 13px;">Mahasiswa Komputerisasi Akuntansi Universitas Ma'soem.</p>
         </div>
 
         <div class="section" id="portfolio">
-            <h2>Portfolio</h2>
-            <div class="project-card">
-                <i class="bi bi-phone-vibrate" style="font-size: 30px; color: #6c5ce7;"></i>
-                <h4 style="margin: 5px 0;">Smart Campus Mobile</h4>
-                <p style="font-size: 11px;">Aplikasi akademik (UAS Project) dengan sistem Smart Mission.</p>
-                <a href="https://smart-campus-mobile-ardila.vercel.app/" class="btn-link" target="_blank">
+            <h2>UAS Project Portfolio</h2>
+            <div class="project-box">
+                <i class="bi bi-phone-vibrate" style="font-size: 40px; color: #6c5ce7;"></i>
+                <h3 style="margin-top: 10px;">Smart Campus Mobile</h3>
+                <p style="font-size: 12px; color: #636e72;">Aplikasi manajemen akademik dengan Smart Schedule & Mission System.</p>
+                <a href="https://smart-campus-mobile-ardila.vercel.app/" class="btn-apps" target="_blank">
                     <i class="bi bi-rocket-takeoff"></i> Buka Aplikasi
                 </a>
             </div>
         </div>
 
-        <div class="section" id="certificate">
-            <h2>Certificate</h2>
-            <p>Sertifikasi Kompetensi Bidang Akuntansi & IT.</p>
-        </div>
-
-        <div class="section" id="contact">
-            <h2>Contact</h2>
-            <p><i class="bi bi-envelope"></i> ardila@example.com</p>
-            <p><i class="bi bi-github"></i> github.com/ardila-sabila</p>
+        <div class="section" id="skills"><h2>Skills</h2><p style="font-size: 13px;">PHP, MySQL, CSS, Bootstrap.</p></div>
+        <div class="section" id="education"><h2>Education</h2><p style="font-size: 13px;">Universitas Ma'soem - D3 Komputerisasi Akuntansi.</p></div>
+        
+        <div style="text-align: center; font-size: 10px; color: #b2bec3; margin-top: 20px;">
+            <p>&copy; 2026 Ardila Sabila</p>
         </div>
     </div>
 
     <script>
         window.onload = function() {
-            setTimeout(() => { document.getElementById("loading").style.display = "none"; }, 800);
+            setTimeout(() => { document.getElementById("loader").style.display = "none"; }, 800);
         }
     </script>
 </body>
