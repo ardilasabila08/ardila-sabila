@@ -4,171 +4,114 @@
     <meta charset="UTF-8">
     <title>CV Ardila Sabila</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#6c5ce7">
-
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; scroll-behavior: smooth; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
+        body { background: linear-gradient(135deg, #6c5ce7, #a29bfe); min-height: 100vh; display: flex; flex-direction: column; align-items: center; padding: 20px 10px; }
         
-        body { 
-            background: linear-gradient(135deg, #6c5ce7, #a29bfe); 
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 20px 10px;
-        }
-
-        /* Navigasi Menu Atas (Horizontal Scroll) */
-        .navbar {
-            width: 100%;
-            max-width: 500px;
-            display: flex;
-            overflow-x: auto;
-            gap: 15px;
-            padding: 15px;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            margin-bottom: 20px;
-            white-space: nowrap;
-        }
+        /* Menu Navigasi */
+        .navbar { width: 100%; max-width: 500px; display: flex; overflow-x: auto; gap: 20px; padding: 15px; background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(10px); border-radius: 20px; margin-bottom: 20px; white-space: nowrap; }
         .navbar::-webkit-scrollbar { display: none; }
-        .navbar a {
-            text-decoration: none;
-            color: white;
-            font-size: 11px;
-            font-weight: 600;
-            text-transform: uppercase;
-        }
+        .navbar a { text-decoration: none; color: white; font-size: 12px; font-weight: 600; text-transform: uppercase; cursor: pointer; }
+        .navbar a.active { color: #2d3436; background: white; padding: 5px 12px; border-radius: 10px; }
 
-        /* Container Kartu CV */
-        .cv-card {
-            width: 100%;
-            max-width: 450px;
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 40px;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
-            overflow: hidden;
-            padding-bottom: 30px;
-        }
+        /* Container Kartu */
+        .cv-card { width: 100%; max-width: 450px; background: white; border-radius: 40px; box-shadow: 0 25px 50px rgba(0,0,0,0.2); overflow: hidden; min-height: 500px; display: flex; flex-direction: column; }
 
-        /* Profile Header */
-        .profile-header {
-            text-align: center;
-            padding: 40px 20px;
-        }
-        .profile-header h1 { font-size: 28px; color: #2d3436; margin-bottom: 20px; font-weight: 700; }
-        .profile-header img {
-            width: 160px;
-            height: 160px;
-            border-radius: 25px;
-            border: 5px solid white;
-            object-fit: cover;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            margin-bottom: 20px;
-        }
-        .profile-header p {
-            font-size: 13px;
-            color: #636e72;
-            line-height: 1.6;
-            padding: 0 15px;
-        }
+        /* Sembunyikan halaman yang tidak aktif */
+        .page { display: none; padding: 40px 25px; animation: fadeIn 0.5s; }
+        .page.active { display: block; }
 
-        /* Sections */
-        .section { padding: 25px; }
-        .section h2 {
-            font-size: 18px;
-            color: #6c5ce7;
-            border-left: 5px solid #6c5ce7;
-            padding-left: 12px;
-            margin-bottom: 15px;
-            font-weight: 700;
-        }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* Kotak Portfolio Smart Campus */
-        .project-box {
-            background: #f8f9ff;
-            border: 2px dashed #a29bfe;
-            border-radius: 30px;
-            padding: 30px 20px;
-            text-align: center;
-            margin-top: 10px;
-        }
-        .btn-launch {
-            display: inline-block;
-            background: linear-gradient(135deg, #6c5ce7, #a29bfe);
-            color: white;
-            text-decoration: none;
-            padding: 14px 35px;
-            border-radius: 15px;
-            font-weight: 700;
-            margin-top: 20px;
-            box-shadow: 0 10px 20px rgba(108, 92, 231, 0.3);
-        }
+        /* Style Home (Ada Foto) */
+        .home-content { text-align: center; }
+        .home-content img { width: 180px; height: 180px; border-radius: 30px; object-fit: cover; margin-bottom: 20px; border: 5px solid #f0f2f5; }
+        .home-content h1 { font-size: 26px; color: #2d3436; }
 
-        #loading-screen {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: white; display: flex; justify-content: center;
-            align-items: center; z-index: 9999;
-        }
+        /* Style Portfolio (Pisah Halaman) */
+        .portfolio-content { text-align: center; }
+        .project-box { background: #f8f9ff; border: 2px dashed #6c5ce7; border-radius: 30px; padding: 30px 20px; margin-top: 20px; }
+        .btn-launch { display: inline-block; background: #6c5ce7; color: white; text-decoration: none; padding: 15px 30px; border-radius: 15px; font-weight: 700; margin-top: 20px; }
+
+        /* Style Section Lain */
+        .section-title { font-size: 20px; color: #6c5ce7; margin-bottom: 15px; border-left: 5px solid #6c5ce7; padding-left: 10px; }
+        .contact-item { display: flex; align-items: center; gap: 15px; margin-bottom: 15px; font-size: 14px; }
     </style>
 </head>
 <body>
 
-    <div id="loading-screen"><img src="icon-512.png" width="80"></div>
-
     <nav class="navbar">
-        <a href="#">Home</a>
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#education">Education</a>
-        <a href="#experience">Experience</a>
-        <a href="#portfolio">Portfolio</a>
-        <a href="#certificate">Certificate</a>
-        <a href="#contact">Contact</a>
+        <a onclick="showPage('home')" id="link-home" class="active">Home</a>
+        <a onclick="showPage('portfolio')" id="link-portfolio">Portfolio</a>
+        <a onclick="showPage('skills')" id="link-skills">Skills</a>
+        <a onclick="showPage('github')" id="link-github">GitHub</a>
+        <a onclick="showPage('contact')" id="link-contact">Contact</a>
     </nav>
 
     <div class="cv-card">
-        <div class="profile-header">
-            <h1>Ardila Sabila</h1>
-            <img src="foto.jpeg" alt="Ardila Sabila">
-            <p>Saya adalah mahasiswa yang memiliki minat dalam pengembangan web dan terus belajar teknologi baru.</p>
-        </div>
-
-        <div class="section" id="about">
-            <h2>Tentang Saya</h2>
-            <p style="font-size: 13px;">Mahasiswa Komputerisasi Akuntansi Universitas Ma'soem yang berfokus pada integrasi Sistem Informasi Akuntansi dan Web Development.</p>
-        </div>
-
-        <div class="section" id="portfolio">
-            <h2>UAS Project Portfolio</h2>
-            <div class="project-box">
-                <i class="bi bi-phone-vibrate" style="font-size: 40px; color: #6c5ce7;"></i>
-                <h3 style="margin-top: 10px; font-size: 18px;">Smart Campus Mobile</h3>
-                <p style="font-size: 12px; color: #636e72;">Aplikasi manajemen akademik (UAS Project) dengan sistem Smart Mission.</p>
-                <a href="https://smart-campus-mobile-ardila.vercel.app/" class="btn-launch" target="_blank">
-                    <i class="bi bi-rocket-takeoff"></i> Buka Aplikasi
-                </a>
+        <div id="home" class="page active">
+            <div class="home-content">
+                <img src="foto.jpeg" alt="Ardila Sabila">
+                <h1>Ardila Sabila</h1>
+                <p style="color: #636e72; margin-top: 10px;">Mahasiswa Komputerisasi Akuntansi <br> Universitas Ma'soem</p>
             </div>
         </div>
 
-        <div class="section" id="skills"><h2>Skills</h2><p style="font-size: 13px;">PHP Native, MySQLi, CSS3, Bootstrap 5, Accounting System.</p></div>
-        <div class="section" id="education"><h2>Education</h2><p style="font-size: 13px;">D3 Komputerisasi Akuntansi - Universitas Ma'soem.</p></div>
-        <div class="section" id="contact"><h2>Contact</h2><p style="font-size: 13px;">Email: ardila@example.com <br> GitHub: ardilasabila08</p></div>
+        <div id="portfolio" class="page">
+            <div class="portfolio-content">
+                <h2 class="section-title">My Projects</h2>
+                <div class="project-box">
+                    <i class="bi bi-phone" style="font-size: 50px; color: #6c5ce7;"></i>
+                    <h3>Smart Campus Mobile</h3>
+                    <p style="font-size: 13px; color: #636e72; margin-top: 10px;">Aplikasi Akademik Mobile Universitas Ma'soem (Project UAS).</p>
+                    <a href="https://smart-campus-mobile-ardila.vercel.app/" target="_blank" class="btn-launch">Buka Aplikasi</a>
+                </div>
+            </div>
+        </div>
 
-        <div style="text-align: center; padding-top: 10px; opacity: 0.3; font-size: 10px;">
-            <p>&copy; 2026 Ardila Sabila</p>
+        <div id="skills" class="page">
+            <h2 class="section-title">Technical Skills</h2>
+            <ul style="list-style: none; padding-top: 10px;">
+                <li class="contact-item"><i class="bi bi-check-circle-fill" style="color: #6c5ce7;"></i> Web Development (PHP, MySQL)</li>
+                <li class="contact-item"><i class="bi bi-check-circle-fill" style="color: #6c5ce7;"></i> Accounting Information Systems</li>
+                <li class="contact-item"><i class="bi bi-check-circle-fill" style="color: #6c5ce7;"></i> UI/UX Design (Bootstrap)</li>
+            </ul>
+        </div>
+
+        <div id="github" class="page">
+            <h2 class="section-title">My GitHub</h2>
+            <p style="margin-bottom: 20px;">Lihat semua repositori kodingan saya di sini:</p>
+            <a href="https://github.com/ardilasabila08" target="_blank" style="color: #6c5ce7; font-weight: 700; text-decoration: none;">
+                <i class="bi bi-github"></i> github.com/ardilasabila08
+            </a>
+        </div>
+
+        <div id="contact" class="page">
+            <h2 class="section-title">Contact Me</h2>
+            <div class="contact-item"><i class="bi bi-envelope-fill"></i> ardila.sabila@email.com</div>
+            <div class="contact-item"><i class="bi bi-whatsapp"></i> +62 8xx-xxxx-xxxx</div>
+            <div class="contact-item"><i class="bi bi-geo-alt-fill"></i> Cicalengka, Jawa Barat</div>
         </div>
     </div>
 
     <script>
-        window.onload = function() {
-            setTimeout(() => { document.getElementById("loading-screen").style.display = "none"; }, 800);
+        function showPage(pageId) {
+            // Sembunyikan semua halaman
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(p => p.classList.remove('active'));
+
+            // Nonaktifkan semua link di navbar
+            const links = document.querySelectorAll('.navbar a');
+            links.forEach(l => l.classList.remove('active'));
+
+            // Tampilkan halaman yang dipilih
+            document.getElementById(pageId).classList.add('active');
+
+            // Aktifkan link yang diklik
+            document.getElementById('link-' + pageId).classList.add('active');
         }
     </script>
 </body>
